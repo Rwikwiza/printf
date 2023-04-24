@@ -74,7 +74,7 @@ unsigned int neg_width_printer(buffer_t *output, unsigned int printed,
 	unsigned int retrn = 0;
 	char width = ' ';
 
-	UNUSED(flags)
+	UNUSED(flags);
 	if (NEG == 1)
 	{
 		for (wid -= printed; wid > 0; wid--)

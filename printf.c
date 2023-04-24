@@ -34,7 +34,7 @@ int runing_printf(const char *format, va_list args, buffer_t *output)
 	for (i = 0; *(format + i); i++)
 	{
 		length = 0;
-		if (*(format + i) == '%)'
+		if (*(format + i) == '%')
 		{
 			temp = 0;
 			flags = flags_handler(format + i + 1, &temp);
@@ -47,7 +47,7 @@ int runing_printf(const char *format, va_list args, buffer_t *output)
 			{
 				i += temp + 1;
 				retrn += f(args, output, flags, wild, precision, length);
-				continue
+				continue;
 			}
 			else if (*(format + i + temp + 1) == '\0')
 			{

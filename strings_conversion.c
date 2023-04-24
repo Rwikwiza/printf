@@ -67,7 +67,7 @@ unsigned int print_S(va_list args, buffer_t *output, unsigned char flags,
 {
 	char *string, *null = "(null)", *hex = "\\x", zero = '0';
 	int size, i;
-	unsigned int retrn = 0
+	unsigned int retrn = 0;
 
 	(void)len;
 	string = va_arg(args, char *);
@@ -164,7 +164,7 @@ unsigned int print_R(va_list args, buffer_t *output,
 	(void)flags;
 	(void)len;
 
-	string = va_arg(args, char *)
+	string = va_arg(args, char *);
 		if (string == NULL)
 			return (_memcpy(output, null, 6));
 	for (size = 0; *(string + size);)
