@@ -31,24 +31,20 @@ unsigned int print_s(va_list args, buffer_t *output, unsigned char flags,
 	(void)len;
 
 	string = va_arg(args, char *);
-		if (string == NULL)
-			return (_memcpy(output, null, 6));
-		for (size = 0; *(string + size);)
-			size++;
-
-		retrn += string_width_printer(output, flags, wid, prec, size);
-
-		prec = (prec == -1) ? size : prec;
-		while (*string != '\0' && prec > 0)
-		{
-			retrn += _memcpy(output, string, 1);
-			prec--;
-			string++;
-		}
-
-		retrn += neg_width_printer(output, retrn, flags, wid);
-
-		return (retrn);
+	if (string == NULL)
+		return (_memcpy(output, null, 6));
+	for (size = 0; *(string + size);)
+		size++;
+	retrn += string_width_printer(output, flags, wid, prec, size);
+	prec = (prec == -1) ? size : prec;
+	while (*string != '\0' && prec > 0)
+	{
+		retrn += _memcpy(output, string, 1);
+		prec--;
+		string++;
+	}
+	retrn += neg_width_printer(output, retrn, flags, wid);
+	return (retrn);
 }
 
 /**
@@ -165,8 +161,8 @@ unsigned int print_R(va_list args, buffer_t *output,
 	(void)len;
 
 	string = va_arg(args, char *);
-		if (string == NULL)
-			return (_memcpy(output, null, 6));
+	if (string == NULL)
+		return (_memcpy(output, null, 6));
 	for (size = 0; *(string + size);)
 		size++;
 

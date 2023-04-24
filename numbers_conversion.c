@@ -33,10 +33,8 @@ unsigned int print_di(va_list args, buffer_t *output,
 		digit = va_arg(args, int);
 	if (len == SHORT)
 		digit = (short)digit;
-
 	if (SPACE_F == 1 && digit >= 0)
 		retrn += _memcpy(output, &space, 1);
-
 	if (prec <= 0 && NEG_F == 0) /* Handle width  */
 	{
 		if (digit == LONG_MIN)
@@ -50,12 +48,10 @@ unsigned int print_di(va_list args, buffer_t *output,
 		count += (digit < 0) ? 1 : 0;
 		count += (PLUS_F == 1 && digit >= 0) ? 1 : 0;
 		count += (SPACE_F == 1 && digit >= 0) ? 1 : 0;
-
 		if (ZERO_F == 1 && PLUS_F == 1 && digit >= 0)
 			retrn += _memcpy(output, &plus, 1);
 		if (ZERO_F == 1 && digit < 0)
 			retrn += _memcpy(output, &neg, 1);
-
 		pad = (ZERO_F == 1) ? '0' : ' ';
 		for (wid -= count; wid > 0; wid--)
 			retrn += _memcpy(output, &pad, 1);
@@ -64,12 +60,9 @@ unsigned int print_di(va_list args, buffer_t *output,
 		retrn += _memcpy(output, &neg, 1);
 	if (ZERO_F == 0 && (PLUS_F == 1 && digit >= 0))
 		retrn += _memcpy(output, &plus, 1);
-
 	if (!(digit == 0 && prec == 0))
 		retrn += convert_sbase(output, digit, "0123456789", flags, 0, prec);
-
 	retrn += neg_width_printer(output, retrn, flags, wid);
-
 	return (retrn);
 }
 

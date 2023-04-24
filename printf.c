@@ -17,7 +17,7 @@ void cleanup_function(va_list args, buffer_t *output)
 }
 
 /**
- * run_printf - Reads through the format string for _printf.
+ * runing_printf - Reads through the format string for _printf.
  * @format: string to print
  * @output: A buffer_t struct containing a buffer.
  * @args: A va_list of arguments.
@@ -29,7 +29,8 @@ int runing_printf(const char *format, va_list args, buffer_t *output)
 	int i, wild, precision, retrn = 0;
 	char temp;
 	unsigned char flags, length;
-	unsigned int (*f)(va_list, buffer_t *, unsigned char, int, int, unsigned char);
+	unsigned int (*f)(va_list, buffer_t *, unsigned char,
+			int, int, unsigned char);
 
 	for (i = 0; *(format + i); i++)
 	{
