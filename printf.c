@@ -43,7 +43,7 @@ int runing_printf(const char *format, va_list args, buffer_t *output)
 			precision = precision_handler(args, format + i + temp + 1, &temp);
 			length = length_handler(format + i + temp + 1, &temp);
 
-			f = specifiers_handler(format + i + temp + 1);
+			f = handle_specifiers(format + i + temp + 1);
 			if (f != NULL)
 			{
 				i += temp + 1;

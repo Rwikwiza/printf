@@ -98,17 +98,7 @@ unsigned char flags_handler(const char *flags, char *index);
 unsigned char length_handler(const char *modifier, char *index);
 int width_handler(va_list args, const char *modifier, char *index);
 int precision_handler(va_list args, const char *modifier, char *index);
-
-/**
- * specifiers_handler - Matches a conversion specifier with
- *                     a corresponding conversion function.
- * @char: string
- * @int:integer
- * Return: If a conversion function is matched - a pointer to the function.
- *         Otherwise - NULL.
- */
-
-unsigned int (*specifiers_handler(const char *specifier))(va_list, buffer_t *,
+unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
 		unsigned char, int, int, unsigned char);
 
 /* Modifiers */

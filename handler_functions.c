@@ -4,16 +4,7 @@ unsigned char flags_handler(const char *flag, char *index);
 unsigned char length_handler(const char *modifier, char *index);
 int width_handler(va_list args, const char *modifier, char *index);
 int precision_handler(va_list args, const char *modifier, char *index);
-
-/**
- * specifiers_handler-Matches a conversion specifier
- * with conversion function.
- * @char: string
- * @int: integer
- * Return: return a pointer to the function else NULL.
- */
-
-unsigned int (*specifiers_handler(const char *specifier))(va_list, buffer_t *,
+unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
 		unsigned char, int, int, unsigned char);
 
 /**
@@ -153,18 +144,19 @@ int precision_handler(va_list args, const char *modifier, char *i)
 	}
 	return (val);
 }
-
 /**
- * specifiers_handler-Matches a conversion specifier with conversion function.
- * @char:string
- * @int: integer
- * Return: return a pointer to the function else NULL.
+ * handle_specifiers - Matches a conversion specifier with
+ *                     a corresponding conversion function.
+ * @char: string
+ * @int: integers
+ *
+ * Return: If a conversion function is matched - a pointer to the function.
+ *         Otherwise - NULL.
  */
-unsigned int (*specifiers_handler(const char *specifier))(va_list, buffer_t *,
+unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
 		unsigned char, int, int, unsigned char)
 {
 	int i;
-
 	converter_t converters[] = {
 		{'c', print_c},
 		{'s', print_s},
@@ -180,11 +172,14 @@ unsigned int (*specifiers_handler(const char *specifier))(va_list, buffer_t *,
 		{'p', print_p},
 		{'r', print_r},
 		{'R', print_R},
-		{0, NULL}};
+		{0, NULL}
+	};
+
 	for (i = 0; converters[i].func; i++)
 	{
 		if (converters[i].specifier == *specifier)
 			return (converters[i].func);
 	}
+
 	return (NULL);
 }
